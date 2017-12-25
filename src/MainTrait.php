@@ -3,7 +3,7 @@ namespace Gap\Dto;
 
 trait MainTrait
 {
-    public function __construct($data = [])
+    public function __construct(array $data = [])
     {
         $this->init();
         $this->load($data);
@@ -19,7 +19,7 @@ trait MainTrait
         return get_object_vars($this);
     }
 
-    public function __set($key, $val): void
+    public function __set(string $key, $val): void
     {
         if ($flagPos = strpos($key, '_')) {
             $subKey = substr($key, $flagPos + 1);
@@ -30,6 +30,7 @@ trait MainTrait
                 return;
             }
 
+            // deprecated
             $getDtoFun = 'get' . $dtoName;
             if ($dto = $this->$getDtoFun()) {
                 $dto->$subKey = $val;
