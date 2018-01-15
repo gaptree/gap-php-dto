@@ -41,7 +41,7 @@ trait MainTrait
         throw new \OutOfBoundsException('Cannot find ' . $key . ' in ' . static::class);
     }
 
-    public function load($data = []): void
+    public function load(array $data = []): void
     {
         foreach ($data as $key => $val) {
             if (is_array($val) &&

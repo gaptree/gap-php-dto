@@ -1,7 +1,7 @@
 <?php
 namespace Gap\Dto;
 
-class DtoBase
+class DtoBase implements \JsonSerializable
 {
     use MainTrait;
 }
