@@ -3,7 +3,7 @@ namespace phpunit\Gap\Dto;
 
 use PHPUnit\Framework\TestCase;
 
-class DtoTest extends TestCase
+class UserDtoTest extends TestCase
 {
     public function testDto(): void
     {
