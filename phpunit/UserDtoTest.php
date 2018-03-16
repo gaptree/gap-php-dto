@@ -2,6 +2,7 @@
 namespace phpunit\Gap\Dto;
 
 use PHPUnit\Framework\TestCase;
+use Gap\Dto\DateTime;
 
 class UserDtoTest extends TestCase
 {
@@ -9,24 +10,25 @@ class UserDtoTest extends TestCase
     {
         $nick = 'hhhh';
         $userId = base64_encode(random_bytes(32));
-        $created = new \DateTime();
-        $createdStr = $created->format('Y-m-d H:i:s');
+        $created = new DateTime('2018-3-20 15:16:17');
 
         $user = new UserDto([
             'userId' => $userId,
             'nick' => $nick,
-            'created' => $createdStr
+            'created' => $created
         ]);
 
         $this->assertEquals($nick, $user->nick);
         $this->assertEquals($userId, $user->userId);
-        $this->assertEquals($createdStr, $user->created);
+        $this->assertEquals($created, $user->created);
 
         $arr =  json_decode(json_encode($user), true);
-
         $this->assertEquals($nick, $arr['nick']);
         $this->assertEquals($userId, $arr['userId']);
-        $this->assertEquals($createdStr, $arr['created']);
+        $this->assertEquals(
+            $created->format('Y-m-d H:i:s.u'),
+            $arr['created']
+        );
     }
 
     /**
