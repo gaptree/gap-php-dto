@@ -1,3 +1,4 @@
 vendor
 **/*.bk-*
 **/*.bk
+composer.lock

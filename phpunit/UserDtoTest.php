@@ -22,7 +22,12 @@ class UserDtoTest extends TestCase
         $this->assertEquals($userId, $user->userId);
         $this->assertEquals($created, $user->created);
 
-        $arr =  json_decode(json_encode($user), true);
+        $encoded = json_encode($user);
+        if ($encoded == false) {
+            return;
+        }
+
+        $arr =  json_decode($encoded, true);
         $this->assertEquals($nick, $arr['nick']);
         $this->assertEquals($userId, $arr['userId']);
         $this->assertEquals(
