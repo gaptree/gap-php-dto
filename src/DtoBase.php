@@ -1,7 +1,7 @@
 <?php
 namespace Gap\Dto;
 
-abstract class DtoBase implements \JsonSerializable
+abstract class DtoBase implements \JsonSerializable, LoadInterface
 {
     public function __construct(array $data = [])
     {
@@ -41,12 +41,16 @@ abstract class DtoBase implements \JsonSerializable
         throw new \OutOfBoundsException('Cannot find ' . $key . ' in ' . static::class);
     }
 
-    public function load(array $data = []): void
+    public function load($data = []): void
     {
+        if (!is_array($data)) {
+            throw new \Exception('require array');
+        }
+
         foreach ($data as $key => $val) {
             if (is_array($val) &&
                 property_exists($this, $key) &&
-                $this->$key instanceof self
+                $this->$key instanceof LoadInterface
             ) {
                 $this->$key->load($val);
                 continue;
