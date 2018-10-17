@@ -5,9 +5,11 @@ class Bin implements \JsonSerializable, LoadInterface
 {
     private $bin;
 
-    public function __construct(string $bin)
+    public function __construct(string $bin = '')
     {
-        $this->load($bin);
+        if ($bin) {
+            $this->load($bin);
+        }
     }
 
     public function setByHex(string $hex): void

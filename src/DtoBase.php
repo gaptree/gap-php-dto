@@ -48,8 +48,7 @@ abstract class DtoBase implements \JsonSerializable, LoadInterface
         }
 
         foreach ($data as $key => $val) {
-            if (is_array($val) &&
-                property_exists($this, $key) &&
+            if (property_exists($this, $key) &&
                 $this->$key instanceof LoadInterface
             ) {
                 $this->$key->load($val);
