@@ -10,6 +10,16 @@ class Bin implements \JsonSerializable, LoadInterface
         $this->load($bin);
     }
 
+    public function setByHex(string $hex): void
+    {
+        $this->bin = hex2bin($hex);
+    }
+
+    public function setByBin(string $bin): void
+    {
+        $this->bin = $bin;
+    }
+
     public function load($val): void
     {
         $this->bin = $val;
