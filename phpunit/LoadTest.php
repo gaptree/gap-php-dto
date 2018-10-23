@@ -10,7 +10,8 @@ class LoadTest extends TestCase
         $article = new Util\ArticleDto();
         $article->load([
             'code' => 'somecode',
-            'created' => '2018-12-12 00:00:00'
+            'created' => '2018-12-12 00:00:00',
+            'changed' => new \Gap\Dto\DateTime('2018-12-21')
         ]);
 
         $this->assertInstanceOf(
@@ -20,6 +21,10 @@ class LoadTest extends TestCase
         $this->assertEquals(
             '2018-12-12 00:00:00.000000',
             $article->created
+        );
+        $this->assertEquals(
+            '2018-12-21 00:00:00.000000',
+            $article->changed
         );
         $this->assertEquals(
             bin2hex('somecode'),

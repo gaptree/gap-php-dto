@@ -27,7 +27,7 @@ class Json implements \JsonSerializable, LoadInterface
 
     public function load($val): void
     {
-        $this->setByJson($val);
+        $this->setByArr($val);
     }
 
     public function getJson(): string
