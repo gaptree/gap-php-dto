@@ -20,7 +20,10 @@
     "autoload": {
         "psr-4": {
             "Gap\\Dto\\": "src"
-        }
+        },
+        "files": [
+            "fun/dto.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
